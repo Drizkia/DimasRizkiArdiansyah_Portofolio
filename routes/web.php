@@ -32,43 +32,27 @@ Route::middleware(['admin'])->group(function () {
 });
 
 
-// //! iini test
-// Route::get('/test-upload', function() { // ✅ TAMBAH INI - GET ROUTE
-//     return view('test-upload');
-// });
-
-// Route::post('/test-upload', function(Request $request) {
-//     try {
-//         if (!$request->hasFile('image')) {
-//             return response()->json(['success' => false, 'error' => 'No file uploaded']);
-//         }
+//! iini test
+Route::get('/debug-db', function() {
+    try {
+        \DB::connection()->getPdo();
+        echo "✅ DATABASE CONNECTED<br>";
         
-//         $file = $request->file('image');
+        // Cek tables
+        $tables = \DB::select('SHOW TABLES');
+        echo "✅ TABLES: " . count($tables) . " found<br>";
         
-//         // HARCODE CREDENTIALS - PAKAI YANG ASLI DARI CLOUDINARY
-//         $cloudinary = new \Cloudinary\Cloudinary([
-//             "cloud" => [
-//                 "cloud_name" => "ddgrw2t9u",  // ✅ Cloud Name kamu
-//                 "api_key" => "129649819264383",  // ✅ API Key asli
-//                 "api_secret" => "xzFm4W_Y3nsuL8yNwgrfJeFgNSQ",  // ✅ API Secret asli
-//             ],
-//             "url" => [
-//                 "secure" => true
-//             ]
-//         ]);
+        foreach($tables as $table) {
+            echo " - " . $table->Tables_in_railway . "<br>";
+        }
         
-//         $result = $cloudinary->uploadApi()->upload($file->getRealPath(), [
-//             'folder' => 'test'
-//         ]);
-        
-//         return response()->json([
-//             'success' => true, 
-//             'url' => $result['secure_url'],
-//             'public_id' => $result['public_id'],
-//             'message' => 'Cloudinary work! 🚀'
-//         ]);
-        
-//     } catch (\Exception $e) {
-//         return response()->json(['success' => false, 'error' => $e->getMessage()]);
-//     }
-// });
+    } catch (\Exception $e) {
+        echo "❌ DATABASE ERROR: " . $e->getMessage() . "<br>";
+        echo "Config: " . json_encode([
+            'host' => config('database.connections.mysql.host'),
+            'port' => config('database.connections.mysql.port'),
+            'database' => config('database.connections.mysql.database'),
+            'username' => config('database.connections.mysql.username'),
+        ]);
+    }
+});
