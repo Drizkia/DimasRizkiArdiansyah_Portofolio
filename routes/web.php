@@ -9,12 +9,13 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
 // ✅ HAPUS YANG INI - DUPLICATE
-// Route::get('/', function () {
-//     return view('main');
-// });
+// routes/web.php
+Route::get('/', function() {
+    return 'LARAVEL BASIC WORKS';
+});
 
 // Porto Route
-Route::get('/', [PortfolioController::class, 'index'])->name('home');
+// Route::get('/', [PortfolioController::class, 'index'])->name('home');
 
 // Public Admin Login Routes
 Route::get('/admin/login', [AdminController::class, 'showLogin'])->name('admin.login');
