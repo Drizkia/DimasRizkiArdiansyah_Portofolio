@@ -13,7 +13,7 @@ dockerfilePath = "Dockerfile"
 # startCommand = "php artisan serve --host=0.0.0.0 --port=$PORT"
 # startCommand = "php artisan config:clear && php artisan cache:clear && php artisan serve --host=0.0.0.0 --port=8080"
 # startCommand = "composer --version && php artisan --version && echo 'BOTH WORK' && sleep 30"
-startCommand = "php artisan --version && echo 'LARAVEL ARTISAN WORKS' && sleep 30"
+startCommand = "php artisan route:list && echo 'ROUTES OK' && sleep 30"
 
 [environment]
 APP_ENV = "local"
