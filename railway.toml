@@ -7,8 +7,8 @@ dockerfilePath = "Dockerfile"
 startCommand = "php artisan config:clear && php artisan cache:clear && php artisan serve --host=0.0.0.0 --port=8080"
 
 [environment]
-APP_ENV = "local"
-APP_DEBUG = "true"
+APP_ENV = "production"
+APP_DEBUG = "false"
 
 # Database Configuration untuk MySQL
 DB_CONNECTION = "mysql"
