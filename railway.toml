@@ -13,8 +13,8 @@ startCommand = "php artisan migrate --force && php artisan serve --host=0.0.0.0 
 # startCommand = "php artisan serve --host=0.0.0.0 --port=$PORT"
 
 [environment]
-APP_ENV = "production"
-APP_DEBUG = "false"
+APP_ENV = "local"
+APP_DEBUG = "true"
 
 # Database Configuration untuk MySQL
 DB_CONNECTION = "mysql"
