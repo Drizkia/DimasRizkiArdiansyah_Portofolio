@@ -9,8 +9,8 @@ dockerfilePath = "Dockerfile"
 # startCommand = "composer dump-autoload && php artisan --version && sleep 60"
 # startCommand = "php artisan --version && echo 'LARAVEL WORKS' && sleep 60"
 # startCommand = "cd public && php -S 0.0.0.0:$PORT index.php"
-# startCommand = "php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=8080"
-startCommand = "php artisan serve --host=0.0.0.0 --port=$PORT"
+startCommand = "php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=8080"
+# startCommand = "php artisan serve --host=0.0.0.0 --port=$PORT"
 
 [environment]
 APP_ENV = "production"
