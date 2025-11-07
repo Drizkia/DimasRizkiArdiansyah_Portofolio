@@ -25,6 +25,7 @@ RUN php artisan config:cache && \
 
 # Set permissions
 RUN chmod -R 775 storage bootstrap/cache
+RUN chown -R www-data:www-data storage bootstrap/cache
 
 EXPOSE 8080
 
