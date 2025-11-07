@@ -4,10 +4,15 @@ $app = require_once __DIR__.'/../bootstrap/app.php';
 
 try {
     $kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
-    echo "KERNEL SUCCESS";
+    
+    $request = Illuminate\Http\Request::capture();
+    $response = $kernel->handle($request);
+    
+    echo "REQUEST HANDLING SUCCESS";
+    $response->send();
+    
 } catch (Throwable $e) {
-    echo "KERNEL ERROR: " . $e->getMessage() . "\n";
+    echo "REQUEST ERROR: " . $e->getMessage() . "\n";
     echo "FILE: " . $e->getFile() . "\n"; 
     echo "LINE: " . $e->getLine() . "\n";
-    echo "TRACE: " . $e->getTraceAsString();
 }
