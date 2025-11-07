@@ -4,15 +4,12 @@ $app = require_once __DIR__.'/../bootstrap/app.php';
 
 try {
     $kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
-    
-    $request = Illuminate\Http\Request::capture();
+    $request = Illuminate\Http\Request::create('/');
     $response = $kernel->handle($request);
     
-    echo "REQUEST HANDLING SUCCESS";
+    echo "ROUTE DISPATCH SUCCESS - Status: " . $response->getStatusCode();
     $response->send();
     
 } catch (Throwable $e) {
-    echo "REQUEST ERROR: " . $e->getMessage() . "\n";
-    echo "FILE: " . $e->getFile() . "\n"; 
-    echo "LINE: " . $e->getLine() . "\n";
+    echo "ROUTE ERROR: " . $e->getMessage();
 }
